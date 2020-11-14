@@ -1,0 +1,57 @@
+<section class="p-4">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h3 class="display-3">Spotify Music Search</h3>
+        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto delectus eveniet ipsa laudantium maxime molestiae odio officiis omnis, quaerat quam quis velit. Atque cumque dicta, ducimus impedit itaque perferendis velit.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Search Music -->
+<section class="">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <form>
+          <div class="form-group">
+            <input [(ngModel)]="searchQuery" (keyup)="searchArtists()" type="search" class="form-control" placeholder="Search an Artist" name="search">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- artist Information -->
+<section class="p-3">
+  <div class="container">
+    <div class="row" *ngFor="let artist of artists">
+      <div class="col">
+        <div class="card mt-3">
+          <div class="card-header bg-primary text-white">
+            <h2>{{artist.name}}</h2>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-3">
+                <img [src]="artist.images[0].url" class="img-fluid img-thumbnail" alt="">
+              </div>
+              <div class="col-md-9">
+                <h4 class="display-3 text-primary">
+                  <a routerLink="/artists/{{artist.id}}">{{artist.name}}</a>
+                </h4>
+                <p class="h2">Followers : {{artist.followers.total | number}}</p>
+                <p class="h5">Genres :
+                  <span class="badge badge-success mr-2" *ngFor="let genre of artist.genres">{{genre}}</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
